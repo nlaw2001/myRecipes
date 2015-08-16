@@ -27,13 +27,13 @@ class RecipesController < ApplicationController
     end
     
     def edit
-        @recipe =Recipe.find(params[:id])
+        @recipe = Recipe.find(params[:id])
     end
     
     def update
         @recipe = Recipe.find(params[:id])
         if @recipe.update(recipe_params)
-            flash[:success] = "Your recipe was updates succesfully"
+            flash[:success] = "Your recipe was updated succesfully"
             redirect_to recipe_path(@recipe)
         else
             render :edit
@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
     private
         
         def recipe_params
-            params.require(:recipe).permit(:name, :summary, :description)
+            params.require(:recipe).permit(:name, :summary, :description, :picture)
         end
 
 end    
